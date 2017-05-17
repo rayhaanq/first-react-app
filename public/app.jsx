@@ -20,26 +20,35 @@ let GreeterMessage = React.createClass({
 
 let GreeterForm = React.createClass({
 
-  onFormSubmit: function (e) {
+  onFormSubmit: function(e) {
     e.preventDefault();
 
     let name = this.refs.name.value;
+    let message = this.refs.message.value;
+    let updates = {};
 
-    if (name.length > 0){
+    if (name.length > 0) {
       this.refs.name.value = '';
-
-      this.props.onNewName(name);
-
+      updates.name = name;
     }
+
+    if (message.length > 0) {
+      this.refs.message.value = '';
+      updates.message = message;
+    }
+
+    this.props.onNewData(updates);
 
   },
 
-  render: function(){
+  render: function() {
 
-    return(
-      <form onSubmit={this.onFormSubmit}>
+    return (
+      <form id="form" onSubmit={this.onFormSubmit}>
 
-        <input type="text" ref="name"/>
+        <input type="text" ref="name" placeholder="Enter name..."/>
+        <br/>
+        <textarea form="form" ref="message" placeholder="Enter message..."></textarea>
         <button>Set Name</button>
 
       </form>
@@ -55,35 +64,38 @@ let Greeter = React.createClass({
 
   getInitialState: function() {
 
-    return {name: this.props.name}
+    return {name: this.props.name, message: this.props.msg}
   },
 
-  handleNewName: function(name) {
+  handleNewData: function(updates) {
 
-    this.setState({
-      name:name
-    });
+
+      this.setState(updates);
+
+    if (updates.message != null){
+      this.setState({
+        message: updates.message
+
+      });
+    }
+
 
   },
 
   render: function() {
     let name = this.state.name;
-    let msg = this.props.msg;
+    let msg = this.state.message;
     return (
 
       <div>
 
         <GreeterMessage name={name} msg={msg}/>
-        <GreeterForm onNewName={this.handleNewName}/>
+        <GreeterForm onNewData={this.handleNewData}/>
 
       </div>
-
     );
-
   }
 });
 
-let firstName = "Rayhaan";
-
 ReactDOM.render(
-  <Greeter name={firstName}/>, document.getElementById('app'));
+  <Greeter/>, document.getElementById('app'));
