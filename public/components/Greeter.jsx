@@ -1,11 +1,11 @@
 const React = require('react');
-const GreeterMessage = require('./GreeterMessage');
-const GreeterForm = require('./GreeterForm');
+const GreeterMessage = require('GreeterMessage');
+const GreeterForm = require('GreeterForm');
 
 let Greeter = React.createClass({
 
   getDefaultProps: function() {
-    return {name: 'React', msg: 'This is a component'};
+    return {name: 'Rayhaan', msg: 'This is a component'};
   },
 
   getInitialState: function() {

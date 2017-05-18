@@ -9529,7 +9529,7 @@ var Greeter = React.createClass({
 
 
   getDefaultProps: function getDefaultProps() {
-    return { name: 'React', msg: 'This is a component' };
+    return { name: 'Rayhaan', msg: 'This is a component' };
   },
 
   getInitialState: function getInitialState() {
@@ -9641,29 +9641,29 @@ module.exports = GreeterForm;
 var React = __webpack_require__(25);
 
 var GreeterMessage = React.createClass({
-    displayName: 'GreeterMessage',
+  displayName: 'GreeterMessage',
 
-    render: function render() {
+  render: function render() {
 
-        var newName = this.props.name;
-        var newMsg = this.props.msg;
+    var newName = this.props.name;
+    var newMsg = this.props.msg;
 
-        return React.createElement(
-            'div',
-            null,
-            React.createElement(
-                'h1',
-                null,
-                'Hello ',
-                newName
-            ),
-            React.createElement(
-                'p',
-                null,
-                newMsg
-            )
-        );
-    }
+    return React.createElement(
+      'div',
+      null,
+      React.createElement(
+        'h1',
+        null,
+        'Hello ',
+        newName
+      ),
+      React.createElement(
+        'p',
+        null,
+        newMsg
+      )
+    );
+  }
 
 });
 
